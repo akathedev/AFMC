@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Name=NodePay Core
+Comment=NodePay P2P Cryptocurrency
+Comment[fr]=NodePay, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=NodePay, eşten eşe kriptografik sanal para birimi
+Exec=nodepay-qt %u
+Terminal=false
+Type=Application
+Icon=nodepay128
+MimeType=x-scheme-handler/nodepay;
+Categories=Office;Finance;
+StartupWMClass=NodePay-qt

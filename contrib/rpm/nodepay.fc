@@ -1,0 +1,8 @@
+/usr/bin/nodepay-cli		--	gen_context(system_u:object_r:nodepay_exec_t,s0)
+/usr/sbin/nodepayd		--	gen_context(system_u:object_r:nodepay_exec_t,s0)
+/usr/lib(64)?/nodepay/nodepayd		--	gen_context(system_u:object_r:nodepay_exec_t,s0)
+
+/etc/nodepay(/.*)?		gen_context(system_u:object_r:nodepay_conf_t,s0)
+/var/lib/nodepay(/.*)?		gen_context(system_u:object_r:nodepay_var_lib_t,s0)
+
+(/var)?/run/nodepayd(/.*)?   gen_context(system_u:object_r:nodepay_var_run_t,s0)

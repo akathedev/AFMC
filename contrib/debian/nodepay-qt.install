@@ -1,0 +1,6 @@
+usr/local/bin/nodepay-qt usr/bin
+share/pixmaps/nodepay32.xpm usr/share/pixmaps
+share/pixmaps/nodepay16.xpm usr/share/pixmaps
+share/pixmaps/nodepay128.png usr/share/pixmaps
+debian/nodepay-qt.desktop usr/share/applications
+debian/nodepay-qt.protocol usr/share/kde4/services/

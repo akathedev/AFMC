@@ -1,0 +1,3 @@
+usr/local/bin/nodepayd usr/bin
+usr/local/bin/nodepay-cli usr/bin
+debian/examples/nodepay.conf etc/nodepay
