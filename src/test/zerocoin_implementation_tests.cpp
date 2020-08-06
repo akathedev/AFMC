@@ -7,16 +7,16 @@
 #include "chainparams.h"
 #include "main.h"
 #include "txdb.h"
-#include "znpcc/deterministicmint.h"
+#include "zafmc/deterministicmint.h"
 #include "key.h"
-#include "znpcc/accumulatorcheckpoints.h"
+#include "zafmc/accumulatorcheckpoints.h"
 #include "libzerocoin/bignum.h"
 #include <boost/test/unit_test.hpp>
 #include <iostream>
-#include <znpcc/accumulators.h>
+#include <zafmc/accumulators.h>
 #include "wallet/wallet.h"
-#include "znpcc/znpccwallet.h"
-#include "znpccchain.h"
+#include "zafmc/zafmcwallet.h"
+#include "zafmcchain.h"
 #include "test_nodepay.h"
 
 using namespace libzerocoin;

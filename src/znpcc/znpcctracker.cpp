@@ -2,15 +2,15 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <znpcc/deterministicmint.h>
-#include "znpcctracker.h"
+#include <zafmc/deterministicmint.h>
+#include "zafmctracker.h"
 #include "util.h"
 #include "sync.h"
 #include "main.h"
 #include "txdb.h"
 #include "wallet/walletdb.h"
-#include "znpcc/accumulators.h"
-#include "znpcc/znpccwallet.h"
+#include "zafmc/accumulators.h"
+#include "zafmc/zafmcwallet.h"
 #include "witness.h"
 
 using namespace std;
@@ -158,7 +158,7 @@ CAmount CzAFMCTracker::GetBalance(bool fConfirmedOnly, bool fUnconfirmedOnly) co
     }
 
     {
-        //LOCK(cs_npcctracker);
+        //LOCK(cs_afmctracker);
         // Get Unused coins
         for (auto& it : mapSerialHashes) {
             CMintMeta meta = it.second;
@@ -478,7 +478,7 @@ std::set<CMintMeta> CzAFMCTracker::ListMints(bool fUnusedOnly, bool fMatureOnly,
             Add(dMint, false, false, zAFMCWallet);
         }
         delete zAFMCWallet;
-        LogPrint("zero", "%s: added %d dznpcc from DB\n", __func__, listDeterministicDB.size());
+        LogPrint("zero", "%s: added %d dzafmc from DB\n", __func__, listDeterministicDB.size());
     }
 
     std::vector<CMintMeta> vOverWrite;

@@ -131,8 +131,8 @@
         </spacer>
        </item>
        <item>
-        <widget class="QWidget" name="verticalZnpccOptionsWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalZnpccOptionsLayout">
+        <widget class="QWidget" name="verticalZafmcOptionsWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalZafmcOptionsLayout">
           <property name="margin">
            <number>0</number>
           </property>
@@ -561,8 +561,8 @@ https://www.transifex.com/nodepay-project/nodepay-project-translations</string>
         </layout>
        </item>
        <item>
-        <widget class="QWidget" name="verticalZnpccDisplayWidget" native="true">
-         <layout class="QVBoxLayout" name="verticalZnpccDisplayLayout">
+        <widget class="QWidget" name="verticalZafmcDisplayWidget" native="true">
+         <layout class="QVBoxLayout" name="verticalZafmcDisplayLayout">
           <property name="margin">
            <number>0</number>
           </property>

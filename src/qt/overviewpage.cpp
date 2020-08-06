@@ -193,7 +193,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
 
     // AFMC Balance
     CAmount nTotalBalance = balance + unconfirmedBalance;
-    CAmount npccAvailableBalance = balance - immatureBalance - nLockedBalance;
+    CAmount afmcAvailableBalance = balance - immatureBalance - nLockedBalance;
     CAmount nUnlockedBalance = nTotalBalance - nLockedBalance;
 
     // AFMC Watch-Only Balance
@@ -208,11 +208,11 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     QString sPercentage = "";
     getPercentage(nUnlockedBalance, zerocoinBalance, sPercentage, szPercentage);
     // Combined balances
-    CAmount availableTotalBalance = npccAvailableBalance + matureZerocoinBalance;
+    CAmount availableTotalBalance = afmcAvailableBalance + matureZerocoinBalance;
     CAmount sumTotalBalance = nTotalBalance + zerocoinBalance;
 
     // AFMC labels
-    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, npccAvailableBalance, false, BitcoinUnits::separatorAlways));
+    ui->labelBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, afmcAvailableBalance, false, BitcoinUnits::separatorAlways));
     ui->labelUnconfirmed->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, unconfirmedBalance, false, BitcoinUnits::separatorAlways));
     ui->labelImmature->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, immatureBalance, false, BitcoinUnits::separatorAlways));
     ui->labelLockedBalance->setText(BitcoinUnits::floorHtmlWithUnit(nDisplayUnit, nLockedBalance, false, BitcoinUnits::separatorAlways));
@@ -262,7 +262,7 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& unconfirmed
     bool showWatchOnly = nTotalWatchBalance != 0;
 
     // AFMC Available
-    bool showAFMCAvailable = settingShowAllBalances || npccAvailableBalance != nTotalBalance;
+    bool showAFMCAvailable = settingShowAllBalances || afmcAvailableBalance != nTotalBalance;
     bool showWatchOnlyAFMCAvailable = showAFMCAvailable || nAvailableWatchBalance != nTotalWatchBalance;
     ui->labelBalanceText->setVisible(showAFMCAvailable || showWatchOnlyAFMCAvailable);
     ui->labelBalance->setVisible(showAFMCAvailable || showWatchOnlyAFMCAvailable);

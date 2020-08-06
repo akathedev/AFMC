@@ -2,9 +2,9 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "znpcc/accumulators.h"
+#include "zafmc/accumulators.h"
 #include "chain.h"
-#include "znpcc/deterministicmint.h"
+#include "zafmc/deterministicmint.h"
 #include "main.h"
 #include "stakeinput.h"
 #include "wallet/wallet.h"
@@ -161,12 +161,12 @@ bool CZPivStake::GetTxFrom(CTransaction& tx)
 
 bool CZPivStake::MarkSpent(CWallet *pwallet, const uint256& txid)
 {
-    CzAFMCTracker* znpccTracker = pwallet->znpccTracker.get();
+    CzAFMCTracker* zafmcTracker = pwallet->zafmcTracker.get();
     CMintMeta meta;
-    if (!znpccTracker->GetMetaFromStakeHash(hashSerial, meta))
+    if (!zafmcTracker->GetMetaFromStakeHash(hashSerial, meta))
         return error("%s: tracker does not have serialhash", __func__);
 
-    znpccTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
+    zafmcTracker->SetPubcoinUsed(meta.hashPubcoin, txid);
     return true;
 }
 

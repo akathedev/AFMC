@@ -1106,8 +1106,8 @@ Adresse: %4
         <translation>Denne tekstmarkør bliver rød, hvis en modtageradresse modtager et beløb mindre end %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 unpcc per input.</source>
-        <translation>Kan variere +/- %1 onpcc pr input.</translation>
+        <source>Can vary +/- %1 uafmc per input.</source>
+        <translation>Kan variere +/- %1 oafmc pr input.</translation>
     </message>
     <message>
         <source>(no label)</source>

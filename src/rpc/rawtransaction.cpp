@@ -12,7 +12,7 @@
 #include "main.h"
 #include "net.h"
 #include "primitives/transaction.h"
-#include "znpcc/deterministicmint.h"
+#include "zafmc/deterministicmint.h"
 #include "rpc/server.h"
 #include "script/script.h"
 #include "script/script_error.h"
@@ -21,7 +21,7 @@
 #include "swifttx.h"
 #include "uint256.h"
 #include "utilmoneystr.h"
-#include "znpccchain.h"
+#include "zafmcchain.h"
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"
 #endif
@@ -964,11 +964,11 @@ UniValue createrawzerocoinstake(const UniValue& params, bool fHelp)
     vOutMint[0] = CTxOut(0, scriptEmpty);
     CDeterministicMint dMint;
     if (!pwalletMain->CreateZAFMCOutPut(staked_denom, vOutMint[1], dMint))
-        throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new znpcc output");
+        throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zafmc output");
 
     for (int i=2; i<5; i++) {
         if (!pwalletMain->CreateZAFMCOutPut(libzerocoin::ZQ_ONE, vOutMint[i], dMint))
-            throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new znpcc output");
+            throw JSONRPCError(RPC_WALLET_ERROR, "failed to create new zafmc output");
     }
     coinstake_tx.vout = vOutMint;
 

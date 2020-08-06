@@ -2,14 +2,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "znpccwallet.h"
+#include "zafmcwallet.h"
 #include "main.h"
 #include "txdb.h"
 #include "wallet/walletdb.h"
 #include "init.h"
 #include "wallet/wallet.h"
 #include "deterministicmint.h"
-#include "znpccchain.h"
+#include "zafmcchain.h"
 
 using namespace libzerocoin;
 
@@ -21,7 +21,7 @@ CzAFMCWallet::CzAFMCWallet(std::string strWalletFile)
     uint256 hashSeed;
     bool fFirstRun = !walletdb.ReadCurrentSeedHash(hashSeed);
 
-    //Check for old db version of storing znpcc seed
+    //Check for old db version of storing zafmc seed
     if (fFirstRun) {
         uint256 seed;
         if (walletdb.ReadZAFMCSeed_deprecated(seed)) {
@@ -33,7 +33,7 @@ CzAFMCWallet::CzAFMCWallet(std::string strWalletFile)
                     LogPrintf("%s: Updated zAFMC seed databasing\n", __func__);
                     fFirstRun = false;
                 } else {
-                    LogPrintf("%s: failed to remove old znpcc seed\n", __func__);
+                    LogPrintf("%s: failed to remove old zafmc seed\n", __func__);
                 }
             }
         }
@@ -55,7 +55,7 @@ CzAFMCWallet::CzAFMCWallet(std::string strWalletFile)
         key.MakeNewKey(true);
         seed = key.GetPrivKey_256();
         seedMaster = seed;
-        LogPrintf("%s: first run of znpcc wallet detected, new seed generated. Seedhash=%s\n", __func__, Hash(seed.begin(), seed.end()).GetHex());
+        LogPrintf("%s: first run of zafmc wallet detected, new seed generated. Seedhash=%s\n", __func__, Hash(seed.begin(), seed.end()).GetHex());
     } else if (!pwalletMain->GetDeterministicSeed(hashSeed, seed)) {
         LogPrintf("%s: failed to get deterministic seed for hashseed %s\n", __func__, hashSeed.GetHex());
         return;
@@ -203,7 +203,7 @@ void CzAFMCWallet::SyncWithChain(bool fGenerateMintPool)
             if (ShutdownRequested())
                 return;
 
-            if (pwalletMain->znpccTracker->HasPubcoinHash(pMint.first)) {
+            if (pwalletMain->zafmcTracker->HasPubcoinHash(pMint.first)) {
                 mintPool.Remove(pMint.first);
                 continue;
             }
@@ -326,8 +326,8 @@ bool CzAFMCWallet::SetMintSeen(const CBigNum& bnValue, const int& nHeight, const
         pwalletMain->AddToWallet(wtx);
     }
 
-    // Add to znpccTracker which also adds to database
-    pwalletMain->znpccTracker->Add(dMint, true);
+    // Add to zafmcTracker which also adds to database
+    pwalletMain->zafmcTracker->Add(dMint, true);
 
     //Update the count if it is less than the mint's count
     if (nCountLastUsed < pMint.second) {

@@ -23,11 +23,11 @@
 #endif
 #include "validationinterface.h"
 #include "masternode-payments.h"
-#include "znpcc/accumulators.h"
+#include "zafmc/accumulators.h"
 #include "blocksignature.h"
 #include "spork.h"
 #include "invalid.h"
-#include "znpccchain.h"
+#include "zafmcchain.h"
 
 
 #include <boost/thread.hpp>
@@ -227,8 +227,8 @@ CBlockTemplate* CreateNewBlock(const CScript& scriptPubKeyIn, CWallet* pwallet, 
                 //zerocoinspend has special vin
                 if (hasZerocoinSpends) {
                     //Give a high priority to zerocoinspends to get into the next block
-                    //Priority = (age^6+100000)*amount - gives higher priority to znpccs that have been in mempool long
-                    //and higher priority to znpccs that are large in value
+                    //Priority = (age^6+100000)*amount - gives higher priority to zafmcs that have been in mempool long
+                    //and higher priority to zafmcs that are large in value
                     int64_t nTimeSeen = GetAdjustedTime();
                     double nConfs = 100000;
 
@@ -615,8 +615,8 @@ bool ProcessBlockFound(CBlock* pblock, CWallet& wallet, CReserveKey& reservekey)
     CValidationState state;
     if (!ProcessNewBlock(state, NULL, pblock)) {
         if (pblock->IsZerocoinStake()) {
-            pwalletMain->znpccTracker->RemovePending(pblock->vtx[1].GetHash());
-            pwalletMain->znpccTracker->ListMints(true, true, true); //update the state
+            pwalletMain->zafmcTracker->RemovePending(pblock->vtx[1].GetHash());
+            pwalletMain->zafmcTracker->ListMints(true, true, true); //update the state
         }
         return error("NodePayMiner : ProcessNewBlock, block not accepted");
     }

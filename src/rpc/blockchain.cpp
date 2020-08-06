@@ -14,11 +14,11 @@
 #include "txdb.h"
 #include "util.h"
 #include "utilmoneystr.h"
-#include "znpcc/accumulatormap.h"
-#include "znpcc/accumulators.h"
+#include "zafmc/accumulatormap.h"
+#include "zafmc/accumulators.h"
 #include "wallet/wallet.h"
-#include "znpcc/znpccmodule.h"
-#include "znpccchain.h"
+#include "zafmc/zafmcmodule.h"
+#include "zafmcchain.h"
 
 #include <stdint.h>
 #include <fstream>
@@ -139,12 +139,12 @@ UniValue blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool tx
 
     result.push_back(Pair("moneysupply",ValueFromAmount(blockindex->nMoneySupply)));
 
-    UniValue znpccObj(UniValue::VOBJ);
+    UniValue zafmcObj(UniValue::VOBJ);
     for (auto denom : libzerocoin::zerocoinDenomList) {
-        znpccObj.push_back(Pair(to_string(denom), ValueFromAmount(blockindex->mapZerocoinSupply.at(denom) * (denom*COIN))));
+        zafmcObj.push_back(Pair(to_string(denom), ValueFromAmount(blockindex->mapZerocoinSupply.at(denom) * (denom*COIN))));
     }
-    znpccObj.push_back(Pair("total", ValueFromAmount(blockindex->GetZerocoinSupply())));
-    result.push_back(Pair("zAFMCsupply", znpccObj));
+    zafmcObj.push_back(Pair("total", ValueFromAmount(blockindex->GetZerocoinSupply())));
+    result.push_back(Pair("zAFMCsupply", zafmcObj));
 
     return result;
 }

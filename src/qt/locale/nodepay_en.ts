@@ -1467,7 +1467,7 @@ Address: %4
     </message>
     <message>
         <location line="+8"/>
-        <source>Can vary +/- %1 unpcc per input.</source>
+        <source>Can vary +/- %1 uafmc per input.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6327,7 +6327,7 @@ Please be patient...</source>
 <context>
     <name>ZPivControlDialog</name>
     <message>
-        <location filename="../forms/znpcccontroldialog.ui" line="+20"/>
+        <location filename="../forms/zafmccontroldialog.ui" line="+20"/>
         <source>Select zAFMC to Spend</source>
         <translation type="unfinished"></translation>
     </message>

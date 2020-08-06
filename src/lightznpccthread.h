@@ -8,7 +8,7 @@
 
 #include <atomic>
 #include "genwit.h"
-#include "znpcc/accumulators.h"
+#include "zafmc/accumulators.h"
 #include "concurrentqueue.h"
 #include "chainparams.h"
 #include <boost/function.hpp>
@@ -49,12 +49,12 @@ public:
         return true;
     }
 
-    void StartLightZnpccThread(boost::thread_group& threadGroup) {
+    void StartLightZafmcThread(boost::thread_group& threadGroup) {
         LogPrintf("%s thread start\n", "nodepay-light-thread");
         threadIns = boost::thread(boost::bind(&CLightWorker::ThreadLightZAFMCSimplified, this));
     }
 
-    void StopLightZnpccThread() {
+    void StopLightZafmcThread() {
         threadIns.interrupt();
         LogPrintf("%s thread interrupted\n", "nodepay-light-thread");
     }

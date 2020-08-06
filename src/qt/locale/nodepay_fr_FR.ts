@@ -1122,8 +1122,8 @@ Adresse : %4
         <translation>Ce label devient rouge si l'un des destinataires reçoit un montant inférieur à %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 unpcc per input.</source>
-        <translation>Peut varier de +/- %1 unpcc par entrée.</translation>
+        <source>Can vary +/- %1 uafmc per input.</source>
+        <translation>Peut varier de +/- %1 uafmc par entrée.</translation>
     </message>
     <message>
         <source>(no label)</source>

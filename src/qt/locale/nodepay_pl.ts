@@ -1123,8 +1123,8 @@ MultiWysyłlka: %1</translation>
         <translation>Ta etykieta zmienia kolor na czerwony, jeśli odbiorca otrzymuje mniej niż %1.</translation>
     </message>
     <message>
-        <source>Can vary +/- %1 unpcc per input.</source>
-        <translation>Zmienia się +/- %1 unpcc</translation>
+        <source>Can vary +/- %1 uafmc per input.</source>
+        <translation>Zmienia się +/- %1 uafmc</translation>
     </message>
     <message>
         <source>(no label)</source>

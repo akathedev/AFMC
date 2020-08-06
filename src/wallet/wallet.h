@@ -17,15 +17,15 @@
 #include "main.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
-#include "znpcc/zerocoin.h"
+#include "zafmc/zerocoin.h"
 #include "guiinterface.h"
 #include "util.h"
 #include "validationinterface.h"
 #include "wallet/wallet_ismine.h"
 #include "wallet/walletdb.h"
-#include "znpcc/znpccmodule.h"
-#include "znpcc/znpccwallet.h"
-#include "znpcc/znpcctracker.h"
+#include "zafmc/zafmcmodule.h"
+#include "zafmc/zafmcwallet.h"
+#include "zafmc/zafmctracker.h"
 
 #include <algorithm>
 #include <map>
@@ -46,7 +46,7 @@ extern bool bSpendZeroConfChange;
 extern bool bdisableSystemnotifications;
 extern bool fSendFreeTransactions;
 extern bool fPayAtLeastCustomFee;
-extern bool fGlobalUnlockSpendCache; // Bool used for letting the precomputing thread know that znpccspends need to use the cs_spendcache
+extern bool fGlobalUnlockSpendCache; // Bool used for letting the precomputing thread know that zafmcspends need to use the cs_spendcache
 
 //! -paytxfee default
 static const CAmount DEFAULT_TRANSACTION_FEE = 0;
@@ -226,7 +226,7 @@ public:
     bool DatabaseMint(CDeterministicMint& dMint);
     bool SetMintUnspent(const CBigNum& bnSerial);
     bool UpdateMint(const CBigNum& bnValue, const int& nHeight, const uint256& txid, const libzerocoin::CoinDenomination& denom);
-    string GetUniqueWalletBackupName(bool fznpccAuto) const;
+    string GetUniqueWalletBackupName(bool fzafmcAuto) const;
     void InitAutoConvertAddresses();
 
 
@@ -251,7 +251,7 @@ public:
     bool fWalletUnlockAnonymizeOnly;
     std::string strWalletFile;
     bool fBackupMints;
-    std::unique_ptr<CzAFMCTracker> znpccTracker;
+    std::unique_ptr<CzAFMCTracker> zafmcTracker;
 
     std::set<int64_t> setKeyPool;
     std::map<CKeyID, CKeyMetadata> mapKeyMetadata;
@@ -339,7 +339,7 @@ public:
     void setZWallet(CzAFMCWallet* zwallet)
     {
         zwalletMain = zwallet;
-        znpccTracker = std::unique_ptr<CzAFMCTracker>(new CzAFMCTracker(strWalletFile));
+        zafmcTracker = std::unique_ptr<CzAFMCTracker>(new CzAFMCTracker(strWalletFile));
     }
 
     CzAFMCWallet* getZWallet() { return zwalletMain; }
