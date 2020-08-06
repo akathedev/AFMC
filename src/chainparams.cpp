@@ -180,7 +180,7 @@ public:
         assert(hashGenesisBlock == uint256("0x00000a834daef5b99b6e4d49f2b86c68ed72b4b96003396acc07137fa752097a"));
         assert(genesis.hashMerkleRoot == uint256("0xc6b5a779c63f8fac44f082fc560a298c9d298b60046c949a41a390ac99c4298d"));
 
-        vSeeds.push_back(CDNSSeedData("dynamic-dns.net", "nodepaybtc.dynamic-dns.net"));
+        vSeeds.push_back(CDNSSeedData("amble.fm", "afmc.amble.fm"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 53);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 54);
