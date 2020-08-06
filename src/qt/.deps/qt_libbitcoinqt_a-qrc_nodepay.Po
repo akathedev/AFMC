@@ -1,0 +1,4 @@
+qt/qt_libbitcoinqt_a-qrc_nodepay.o: qt/qrc_nodepay.cpp \
+ /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:
